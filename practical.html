@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практическая часть</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Практическая часть</h1></header>
+
+<nav>
+    <a href="index.html">Главная</a>
+    <a href="research.html">Исследование</a>
+    <a href="process.html">Ход работы</a>
+    <a href="conclusion.html">Заключение</a>
+</nav>
+
+<div class="container">
+    <p>
+        В рамках практической части был разработан прототип системы учета посещаемости.
+        Реализована возможность добавления учеников и изменения их статуса.
+    </p>
+
+    <input type="text" id="name" placeholder="Имя ученика">
+    <button onclick="addStudent()">Добавить</button>
+
+    <ul id="list"></ul>
+</div>
+
+<script>
+function addStudent() {
+    let name = document.getElementById("name").value;
+    if (name === "") return;
+
+    let li = document.createElement("li");
+    li.textContent = name + " — отсутствует";
+
+    li.onclick = function() {
+        li.textContent = name + " — присутствует";
+    };
+
+    document.getElementById("list").appendChild(li);
+    document.getElementById("name").value = "";
+}
+</script>
+
+</body>
+</html>
