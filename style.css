@@ -1,19 +1,19 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #74b9ff, #a29bfe);
+    background: linear-gradient(135deg, #1e272e, #2f3640);
+    color: white;
 }
 
 header {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     color: white;
     text-align: center;
     padding: 20px;
-    font-size: 24px;
 }
 
 nav {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0,0,0,0.7);
     padding: 12px;
     text-align: center;
 }
@@ -26,64 +26,57 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffeaa7;
+    color: #00a8ff;
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 30px auto;
-    background: white;
+    background: #353b48;
     padding: 25px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+input,
+select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background: #2f3640;
+    color: white;
+    margin: 5px;
 }
 
 button {
     padding: 10px 15px;
     border: none;
-    background: #6c5ce7;
+    background: #0097e6;
     color: white;
     border-radius: 8px;
     cursor: pointer;
 }
 
 button:hover {
-    background: #4834d4;
+    background: #00a8ff;
 }
 
-input {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-li {
-    margin: 10px 0;
-    padding: 10px;
-    background: #f1f2f6;
-    border-radius: 8px;
-    cursor: pointer;
-}
-select {
-    width: 60px;
-    padding: 4px;
-    border-radius: 5px;
-    margin-top: 3px;
-}
 table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            overflow-x: auto;
-            display: block;
-        }
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-        th, td {
-            border: 1px solid #ccc;
-            padding: 6px;
-            text-align: center;
-            min-width: 70px;
-        }
+th {
+    background: #0097e6;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #555;
+    padding: 10px;
+    text-align: center;
+}
 
         th {
             background: #6c5ce7;
