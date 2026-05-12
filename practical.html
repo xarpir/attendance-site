@@ -280,8 +280,16 @@ function renderJournal() {
 
             td.innerHTML = `
                 <input placeholder="+ / Н">
-                <input placeholder="Оц." type="number" min="1" max="5">
-                <input placeholder="Тема">
+
+    <select>
+        <option value="">Оц.</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+    </select>
+
+    <input placeholder="Тема">
             `;
 
             row.appendChild(td);
