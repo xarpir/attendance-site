@@ -100,3 +100,46 @@ table {
             font-weight: bold;
             background: #f1f2f6;
         }
+/* Светлая тема */
+body.light {
+    background: linear-gradient(135deg, #74b9ff, #a29bfe);
+    color: black;
+}
+
+/* Тёмная тема */
+body.dark {
+    background: linear-gradient(135deg, #1e272e, #2f3640);
+    color: white;
+}
+
+body.dark .container {
+    background: #353b48;
+    color: white;
+}
+
+body.dark nav {
+    background: rgba(0,0,0,0.8);
+}
+
+body.dark header {
+    background: rgba(0,0,0,0.9);
+}
+
+body.dark input,
+body.dark select {
+    background: #2f3640;
+    color: white;
+    border: 1px solid #555;
+}
+
+.theme-switch {
+    text-align: right;
+    padding: 10px 20px;
+}
+
+.theme-switch button {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
