@@ -17,31 +17,84 @@
 </nav>
 
 <div class="container">
-    <p>
-        В рамках практической части был разработан прототип системы учета посещаемости.
-        Реализована возможность добавления учеников и изменения их статуса.
-    </p>
+    <h2>Учет посещаемости</h2>
 
     <input type="text" id="name" placeholder="Имя ученика">
+    
+    <select id="status">
+        <option value="Присутствует">Присутствует</option>
+        <option value="Отсутствует">Отсутствует</option>
+    </select>
+
+    <input type="text" id="reason" placeholder="Причина (если отсутствует)">
+    
+    <input type="number" id="grade" placeholder="Оценка (1-5)" min="1" max="5">
+
     <button onclick="addStudent()">Добавить</button>
 
-    <ul id="list"></ul>
+    <table>
+        <thead>
+            <tr>
+                <th>Ученик</th>
+                <th>Статус</th>
+                <th>Причина</th>
+                <th>Оценка</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
 </div>
 
 <script>
+let students = [];
+
 function addStudent() {
     let name = document.getElementById("name").value;
+    let status = document.getElementById("status").value;
+    let reason = document.getElementById("reason").value;
+    let grade = document.getElementById("grade").value;
+
     if (name === "") return;
 
-    let li = document.createElement("li");
-    li.textContent = name + " — отсутствует";
+    students.push({
+        name: name,
+        status: status,
+        reason: reason,
+        grade: grade
+    });
 
-    li.onclick = function() {
-        li.textContent = name + " — присутствует";
-    };
-
-    document.getElementById("list").appendChild(li);
     document.getElementById("name").value = "";
+    document.getElementById("reason").value = "";
+    document.getElementById("grade").value = "";
+
+    renderTable();
+}
+
+function deleteStudent(index) {
+    students.splice(index, 1);
+    renderTable();
+}
+
+function renderTable() {
+    let table = document.getElementById("tableBody");
+    table.innerHTML = "";
+
+    students.forEach((student, index) => {
+        let row = document.createElement("tr");
+
+        row.innerHTML = 
+            <td>${student.name}</td>
+            <td>${student.status}</td>
+            <td>${student.reason || "-"}</td>
+            <td>${student.grade || "-"}</td>
+            <td>
+                <button onclick="deleteStudent(${index})">Удалить</button>
+            </td>
+        ;
+
+        table.appendChild(row);
+    });
 }
 </script>
 
