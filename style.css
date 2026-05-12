@@ -65,6 +65,7 @@ li {
     cursor: pointer;
 }
 select {
+    width: 60px;
     padding: 4px;
     border-radius: 5px;
     margin-top: 3px;
