@@ -106,3 +106,193 @@ function renderTable() {
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практическая часть</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            overflow-x: auto;
+            display: block;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px;
+            text-align: center;
+            min-width: 70px;
+        }
+
+        th {
+            background: #6c5ce7;
+            color: white;
+        }
+
+        .journal input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .student-name {
+            font-weight: bold;
+            background: #f1f2f6;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Практическая часть</h1>
+</header>
+
+<nav>
+    <a href="index.html">Главная</a>
+    <a href="research.html">Исследование</a>
+    <a href="process.html">Ход работы</a>
+    <a href="conclusion.html">Заключение</a>
+</nav>
+
+<div class="container">
+
+    <h2>Учет посещаемости</h2>
+
+    <input type="text" id="name" placeholder="Имя ученика">
+    
+    <select id="status">
+        <option>Присутствует</option>
+        <option>Отсутствует</option>
+    </select>
+
+    <input type="text" id="reason" placeholder="Причина отсутствия">
+
+    <input type="number" id="grade" placeholder="Оценка">
+
+    <button onclick="addStudent()">Добавить</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ученик</th>
+                <th>Статус</th>
+                <th>Причина</th>
+                <th>Оценка</th>
+            </tr>
+        </thead>
+
+        <tbody id="studentTable"></tbody>
+    </table>
+
+    <h2>Журнал посещаемости</h2>
+
+    <table class="journal">
+        <thead>
+            <tr id="journalHeader">
+                <th>Имя</th>
+            </tr>
+        </thead>
+
+        <tbody id="journalBody"></tbody>
+    </table>
+
+</div>
+
+<script>
+
+let students = [];
+
+const header = document.getElementById("journalHeader");
+
+for(let i = 1; i <= 30; i++) {
+    let th = document.createElement("th");
+    th.innerText = "Урок " + i;
+    header.appendChild(th);
+}
+
+function addStudent() {
+
+    let name = document.getElementById("name").value;
+    let status = document.getElementById("status").value;
+    let reason = document.getElementById("reason").value;
+    let grade = document.getElementById("grade").value;
+
+    if(name === "") return;
+
+    students.push({
+        name,
+        status,
+        reason,
+        grade
+    });
+
+    renderStudents();
+    renderJournal();
+
+    document.getElementById("name").value = "";
+    document.getElementById("reason").value = "";
+    document.getElementById("grade").value = "";
+}
+
+function renderStudents() {
+
+    let table = document.getElementById("studentTable");
+    table.innerHTML = "";
+
+    students.forEach(student => {
+
+        let row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${student.name}</td>
+            <td>${student.status}</td>
+            <td>${student.reason || "-"}</td>
+            <td>${student.grade || "-"}</td>
+        `;
+
+        table.appendChild(row);
+    });
+}
+
+function renderJournal() {
+
+    let body = document.getElementById("journalBody");
+    body.innerHTML = "";
+
+    students.forEach(student => {
+
+        let row = document.createElement("tr");
+
+        let nameCell = document.createElement("td");
+        nameCell.innerText = student.name;
+        nameCell.classList.add("student-name");
+
+        row.appendChild(nameCell);
+
+        for(let i = 1; i <= 30; i++) {
+
+            let td = document.createElement("td");
+
+            td.innerHTML = `
+                <input placeholder="+ / Н">
+                <input placeholder="Оц." type="number" min="1" max="5">
+                <input placeholder="Тема">
+            `;
+
+            row.appendChild(td);
+        }
+
+        body.appendChild(row);
+    });
+}
+
+</script>
+
+</body>
+</html>
+
